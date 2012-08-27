@@ -1,26 +1,24 @@
 ;; init.el
+(setq debug-on-error t)
+
 (defvar light-dir (file-name-directory load-file-name)
   "root dir of emacs config")
-
-(defvar light-vendor (concat light-dir "vendor/")
-  "house latest tools")
-
-(defvar light-house (concat light-dir "house/")
-  "self update lisp")
+(setq light-vendor (concat light-dir "vendor/")
+      light-house (concat light-dir "house/"))
 
 (message "Hello, %s" (getenv "USER"))
 (message "emacs setting in %s" light-dir)
 
 (add-to-list 'load-path light-dir)
 
-(require 'light-def)
-(require 'light-el)
-(require 'light-fit)
-
-(require 'light-r)
-(require 'light-py)
-
-(require 'light-key)
+;; basic setting
+(mapc 'require '(light-def
+		 light-el
+		 light-fit
+		 light-r
+		 light-py
+		 light-org
+		 light-key))
 
 ;; OSX specific settings
 (when (eq system-type 'darwin)

@@ -32,8 +32,8 @@
 
   ;; File finding
   (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
-  (global-set-key (kbd "C-c y") 'bury-buffer)
-  (global-set-key (kbd "C-c r") 'revert-buffer)
+;  (global-set-key (kbd "C-c y") 'bury-buffer)
+;  (global-set-key (kbd "C-c r") 'revert-buffer)
 
   ;; Window switching. (C-x o goes to the next window)
   (windmove-default-keybindings) ;; Shift+direction
@@ -65,7 +65,7 @@
   (global-set-key (kbd "C-c t") 'insert-time)
 
   ;; ibuffer
-  (global-set-key (kbd "C-c b") 'ibuffer)
+  (global-set-key (kbd "C-x C-b") 'ibuffer)
 
   (global-unset-key "\C-xf")
   )

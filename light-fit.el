@@ -95,4 +95,9 @@
 (define-key ac-completing-map (kbd "C-n") 'ac-next)
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)
 
+(require 'maxframe)
+(add-hook 'window-setup-hook 'maximize-frame t)
+
+(require 'switch-window)
+
 (provide 'light-fit)

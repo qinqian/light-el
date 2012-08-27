@@ -9,7 +9,12 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar elpa-packages '(ess ibuffer ido whole-line-or-region autopair diminish magit find-file-in-project popup smart-tab flymake-python-pyflakes save-visited-files color-theme-solarized auctex muse maxframe)
+(defvar elpa-packages
+  '(ess
+    ibuffer ido whole-line-or-region autopair
+    diminish magit find-file-in-project popup
+    smart-tab flymake-python-pyflakes save-visited-files
+    color-theme-solarized auctex muse maxframe)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p elpa-packages)
@@ -71,9 +76,8 @@
 
 (el-get 'sync my-packages)
 
-;; vendor
+;; vendor house
 (light-load light-vendor)
 (light-load light-house)
-
 
 (provide 'light-el)

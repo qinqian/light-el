@@ -59,15 +59,15 @@
 (eval-when-compile (require 'cl))
 (defun light-load (dir)
   "load all directories under the dir"
-(if (fboundp 'normal-top-level-add-to-load-path)
-    (let* ((lisp-dir dir) 
-           (default-directory lisp-dir))
-      (progn
-        (setq load-path
-              (append
-               (loop for d in (directory-files lisp-dir)
-                     unless (string-match "^\\." d)
-                     collecting (expand-file-name d))
-               load-path))))))
+  (if (fboundp 'normal-top-level-add-to-load-path)
+      (let* ((lisp-dir dir) 
+	     (default-directory lisp-dir))
+	(progn
+	  (setq load-path
+		(append
+		 (loop for d in (directory-files lisp-dir)
+		       unless (string-match "^\\." d)
+		       collecting (expand-file-name d))
+		 load-path))))))
 
 (provide 'light-def)
