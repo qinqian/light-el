@@ -1,5 +1,6 @@
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+
 (dolist (mode '(mouse-wheel-mode blink-cursor-mode
                 menu-bar-mode    tool-bar-mode))
     (when (fboundp mode) (funcall mode -1)))
@@ -8,26 +9,22 @@
 (show-paren-mode 1)
 (transient-mark-mode 1)
 (winner-mode 1)
-
-(global-whitespace-mode 1)
-(global-whitespace-newline-mode 1)
-
-(standard-display-ascii ?\t ">>")  ;; tabs show
 (server-start)
-;; setq-default, setq
 
-(setq visible-bell t
+;; imenu
+(set-default 'imenu-auto-rescan t)
+(set-default 'indicate-empty-lines t)            ;; empty line
+(whites-simple)
+(setq-default
+      visible-bell t
       inhibit-startup-message t
       color-theme-is-global t
-;      browse-url-browser-function 'browse-url-firefox ;;from starter
+      browse-url-browser-function 'browse-url-firefox ;;from starter
       sentence-end-double-space nil
       shift-select-mode nil
       mouse-yank-at-point t
       uniquify-buffer-name-style 'forward
-      whitespace-style '(face trailing lines-tail tabs)
-      show-trailing-whitespace t
       tooltip-delay 1.5
-      whitespace-line-column 80
       ediff-window-setup-function 'ediff-setup-windows-plain
       make-backup-files nil
       bookmark-default-file "~/.emacs.d/.bookmarks.el"
@@ -53,9 +50,6 @@
       mouse-avoidance-mode 'animate
       password-cache-expiry nil)
 
-(set-default 'indent-tabs-mode nil)
-(set-default 'indicate-empty-lines t)
-(set-default 'imenu-auto-rescan t)
 ;; etags, emerge
 (setq emerge-diff-options "--ignore-all-space") ; ignore white-space
 
@@ -122,5 +116,37 @@
                    anything-gtags
                    anything-obsolete
                    ))
+
+;; program
+;; use cedet1.1 bzr version
+(require 'cedet)
+(require 'srecode)
+(semantic-mode 1)
+;;; Turn on CEDET's fun parts
+(setq semantic-load-turn-useful-things-on t)
+;;; Add further minor-modes to be enabled by semantic-mode.
+;;; See doc-string of `semantic-default-submodes' for other things
+;;; you can use here.
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
+(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
+(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
+
+; Enable template insertion menu
+;(global-srecode-minor-mode 1)
+;
+;;;; Enable EDE (Project Management) features
+(global-ede-mode 1)
+;
+;;; Enable Semantic
+;(setq semanticdb-project-roots
+;    (list
+;        (expand-file-name "/")))
+;
+;(semantic-load-enable-excessive-code-helpers)
+;(semantic-load-enable-code-helpers)
+;(semantic-load-enable-gaudy-code-helpers)
+;(semantic-load-enable-minimum-features)
+;(require 'cogre)
+;(require 'cedet-contrib)
 
 (provide 'light-fit)

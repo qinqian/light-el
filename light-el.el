@@ -10,7 +10,9 @@
   (package-refresh-contents))
 
 (defvar elpa-packages
-  '(session ess yasnippet org-fstree
+  '(evil
+    ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
+    session ess yasnippet org-fstree ascii  ; detect special charactor
     ibuffer ido ido-ubiquitous whole-line-or-region autopair
     diminish magit find-file-in-project popup
     smart-tab flymake-python-pyflakes save-visited-files

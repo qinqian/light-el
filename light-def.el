@@ -1,6 +1,44 @@
 ;; defuns
 
+;; whitespace
 ;; edit
+(require 'whitespace)
+(defun whites-color ()
+    (interactive)
+    (setq-default whitespace-line-column 80)        ;; 80 rule for programming
+    (setq-default whitespace-style
+                  '(face lines
+                         trailing newline-mark
+                         ))
+    (custom-set-faces
+     '(light-tab-face
+       ((((class color)) (:background "gainsboro"))) t)   ;; tab color
+     '(light-trailing-space-face
+       ((((class color)) (:background "LightGreen"))) t)  ;; line ends color
+     '(light-long-line-face
+       ((((class color)) (:background "RosyBrown"))) t))
+       ;; lines longer than 80 color
+    (add-hook 'font-lock-mode-hook
+              (function
+               (lambda ()
+                 (setq font-lock-keywords
+                       (append font-lock-keywords
+                               '(("\t+" (0 'light-tab-face t))
+                                 ("^.\\{80,\\}$" (0 'light-long-line-face t))
+                                 ("[ \t]+$"
+                                  (0 'light-trailing-space-face t))))))))
+    (global-whitespace-newline-mode t))        
+
+(defun whites-simple ()
+  (interactive)
+  ;; handy
+  (setq-default show-trailing-whitespace t)      ;; highlight show line ends
+  (standard-display-ascii ?\t "\|/")  ;; tabs show as \|/, easy to count 
+  )
+
+(defmacro whites-off ()
+  `(whitespace-mode -100))
+
 (defun split-window-func-with-other-buffer (split-function)
   (lexical-let ((s-f split-function))
     (lambda ()

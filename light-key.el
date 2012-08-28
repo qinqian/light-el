@@ -85,6 +85,10 @@
   ;; bookmark
   (global-set-key (kbd "C-<f11>") 'bookmark-set)
   (global-set-key (kbd "C-<f12>") 'bookmark-jump)
+
+  ;; whitespace tabs visual
+  (global-set-key (kbd "C-x W") 'turn-whites-on)
+  (global-set-key [(f5)] '(if (fboundp 'speedbar)))
   )
 
 ;; C-w and M-w for cut and copy current line
