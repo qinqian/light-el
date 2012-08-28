@@ -1,0 +1,11 @@
+*~
+*.elc
+^.*
+elpa
+el-get
+auto-save-list
+vendor
+house
+TODO
+ac-comphist.dat
+.smex-items
