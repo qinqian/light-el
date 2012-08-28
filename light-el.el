@@ -10,8 +10,8 @@
   (package-refresh-contents))
 
 (defvar elpa-packages
-  '(ess
-    ibuffer ido whole-line-or-region autopair
+  '(session ess yasnippet org-fstree
+    ibuffer ido ido-ubiquitous whole-line-or-region autopair
     diminish magit find-file-in-project popup
     smart-tab flymake-python-pyflakes save-visited-files
     color-theme-solarized auctex muse maxframe)
@@ -37,6 +37,7 @@
  '(el-get				; el-get is self-hosting
    switch-window			; takes over C-x o
    ac-R
+   slime
    (:name smex				; a better (ido like) M-x
 	  :after (lambda ()
 		   (setq smex-save-file "~/.emacs.d/.smex-items")
@@ -54,6 +55,7 @@
   (loop for p in '(color-theme		; nice looking emacs
                 color-theme-tango
 		   anything
+           anything-R
 		   )
 	do (add-to-list 'el-get-sources p)))
 
@@ -66,9 +68,10 @@
 	do (add-to-list 'el-get-sources p)))
 
 (when (el-get-executable-find "git")
-  (loop for p in '(auto-complete    		; M-x svn-status
+  (loop for p in '(auto-complete
 		   )
 	do (add-to-list 'el-get-sources p)))
+
 (setq my-packages
       (append
        '(el-get switch-window nxhtml)
@@ -77,7 +80,6 @@
 (el-get 'sync my-packages)
 
 ;; vendor house
-(light-load light-vendor)
-(light-load light-house)
+(mapcar 'light-load (list light-vendor light-house))
 
 (provide 'light-el)

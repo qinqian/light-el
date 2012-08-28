@@ -17,8 +17,11 @@
 		 light-fit
 		 light-r
 		 light-py
-		 light-org
-		 light-key))
+     light-lisp
+		 light-pub
+		 light-key
+     light-save
+     ))
 
 ;; OSX specific settings
 (when (eq system-type 'darwin)

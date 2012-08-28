@@ -1,3 +1,5 @@
+(require 'anything-R)
+(require 'ac-R)
 (require 'ess-site)
 (require 'ess-eldoc)
 

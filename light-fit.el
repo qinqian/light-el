@@ -1,20 +1,32 @@
 (when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b")))
-  (mouse-wheel-mode t)
-  (blink-cursor-mode -1)
-  (menu-bar-mode -1)
-  (tool-bar-mode -1))
+  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+(dolist (mode '(mouse-wheel-mode blink-cursor-mode
+                menu-bar-mode    tool-bar-mode))
+    (when (fboundp mode) (funcall mode -1)))
 
+(display-time-mode 1)
+(show-paren-mode 1)
+(transient-mark-mode 1)
+(winner-mode 1)
+
+(global-whitespace-mode 1)
+(global-whitespace-newline-mode 1)
+
+(standard-display-ascii ?\t ">>")  ;; tabs show
+(server-start)
 ;; setq-default, setq
+
 (setq visible-bell t
       inhibit-startup-message t
       color-theme-is-global t
-      browse-url-browser-function 'browse-url-firefox
+;      browse-url-browser-function 'browse-url-firefox ;;from starter
       sentence-end-double-space nil
       shift-select-mode nil
       mouse-yank-at-point t
       uniquify-buffer-name-style 'forward
       whitespace-style '(face trailing lines-tail tabs)
+      show-trailing-whitespace t
+      tooltip-delay 1.5
       whitespace-line-column 80
       ediff-window-setup-function 'ediff-setup-windows-plain
       make-backup-files nil
@@ -30,7 +42,6 @@
       line-spacing 0.2
       mouse-yank-at-point t
       set-mark-command-repeat-pop t
-      show-trailing-whitespace t
       truncate-lines nil
       truncate-partial-width-windows nil
       column-number-mode t
@@ -48,12 +59,14 @@
 ;; etags, emerge
 (setq emerge-diff-options "--ignore-all-space") ; ignore white-space
 
-(display-time-mode 1)
-(show-paren-mode 1)
-(transient-mark-mode t)
-
+;; Use C-f during file selection to switch to regular find-file
 (ido-mode t)
+(ido-everywhere t)
 (setq ido-ubiquitous t)
+(ido-ubiquitous-mode t)
+
+;; Allow the same buffer to be open in different frames
+(setq ido-default-buffer-method 'selected-window)
 (setq ido-enable-prefix nil
       ido-enable-flex-matching t
       ido-auto-merge-work-directories-length nil
@@ -99,5 +112,15 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 (require 'switch-window)
+
+(smex-initialize)
+
+;; anything
+(mapc 'require '(anything-config
+                   anything
+                   anything-complete
+                   anything-gtags
+                   anything-obsolete
+                   ))
 
 (provide 'light-fit)

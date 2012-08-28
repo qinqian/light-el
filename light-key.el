@@ -68,6 +68,23 @@
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 
   (global-unset-key "\C-xf")
+  
+  ;; smex
+  ;; M-x for ido 
+  (global-set-key "\M-x" 'smex)
+
+  ;; recent file
+  (global-set-key [(meta f11)] 'steve-ido-choose-from-recentf)
+  ;; anything
+  (global-set-key [(meta f9)] 'anything)
+
+  ;; show other-buffer in new window
+  (global-set-key "\C-x2" (split-window-func-with-other-buffer 'split-window-vertically))
+  (global-set-key "\C-x3" (split-window-func-with-other-buffer 'split-window-horizontally))
+
+  ;; bookmark
+  (global-set-key (kbd "C-<f11>") 'bookmark-set)
+  (global-set-key (kbd "C-<f12>") 'bookmark-jump)
   )
 
 ;; C-w and M-w for cut and copy current line
