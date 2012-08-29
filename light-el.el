@@ -10,7 +10,7 @@
   (package-refresh-contents))
 
 (defvar elpa-packages
-  '(evil
+  '(evil ein
     ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
     session ess yasnippet org-fstree ascii  ; detect special charactor
     ibuffer ido ido-ubiquitous whole-line-or-region autopair

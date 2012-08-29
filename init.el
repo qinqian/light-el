@@ -21,6 +21,7 @@
 		 light-pub
 		 light-key
      light-save
+     light-eclim
      ))
 
 ;; OSX specific settings

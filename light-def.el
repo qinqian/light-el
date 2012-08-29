@@ -1,9 +1,18 @@
 ;; defuns
 
-;; whitespace
+
 ;; edit
-(require 'whitespace)
+;; evil
+(defun eviler ()
+    (interactive)
+    (evil-mode 1))
+(defun bye-eviler ()
+    (interactive)
+    (funcall evil-mode -1))
+
+;; whitespace
 (defun whites-color ()
+    (require 'whitespace)
     (interactive)
     (setq-default whitespace-line-column 80)        ;; 80 rule for programming
     (setq-default whitespace-style
