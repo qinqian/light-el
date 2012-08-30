@@ -10,19 +10,16 @@
 (message "emacs setting in %s" light-dir)
 
 (add-to-list 'load-path light-dir)
+(add-to-list 'load-path light-house)
 
 ;; basic setting
-(mapc 'require '(light-el
-                 light-def
+(mapc 'require '(light-def
+                 light-el
                  light-fit
-                 light-r
-                 light-py
-                 light-lisp
                  light-pub
                  light-key
                  light-save
-                 light-eclim
-                 light-net
+                 light-prog
                  ))
 
 ;; OSX specific settings

@@ -3,7 +3,7 @@
 (setq interpreter-mode-alist
       (cons '("python" . python-mode) interpreter-mode-alist))
 
-(eval-after-load 'python
+(eval-after-load 'python-mode
   '(require 'flymake-python-pyflakes))
 
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)

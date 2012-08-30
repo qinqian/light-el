@@ -15,6 +15,7 @@
   '(python-mode evil ein paredit pretty-mode markdown-mode markdown-mode+
     ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
     js2-mode js3-mode mmm-mode coffee-mode js-comint ;; for javascript, TO READ
+    fringe-helper python-mode flymake-cursor
     rainbow-mode sass-mode flymake-sass flymake-css flymake-csslint
     session ess yasnippet org-fstree ascii  ; detect special charactor
     ibuffer ido ido-ubiquitous whole-line-or-region autopair
