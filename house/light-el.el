@@ -9,9 +9,13 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+(message "install needed packages")
+
 (defvar elpa-packages
-  '(evil ein paredit pretty-mode
+  '(python-mode evil ein paredit pretty-mode markdown-mode markdown-mode+
     ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
+    js2-mode js3-mode mmm-mode coffee-mode js-comint ;; for javascript, TO READ
+    rainbow-mode sass-mode flymake-sass flymake-css flymake-csslint
     session ess yasnippet org-fstree ascii  ; detect special charactor
     ibuffer ido ido-ubiquitous whole-line-or-region autopair
     diminish magit find-file-in-project popup
@@ -75,7 +79,7 @@
 
 (setq my-packages
       (append
-       '(el-get switch-window nxhtml)
+       '(el-get switch-window)
         (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)

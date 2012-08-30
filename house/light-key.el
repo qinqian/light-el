@@ -88,7 +88,7 @@
 
   ;; whitespace tabs visual
   (global-set-key (kbd "C-x W") 'whites-color)
-  (global-set-key [(f5)] '(if (fboundp 'speedbar)))
+  (global-set-key [(C-f5)] 'speedbar)
 
   ;; lisp map keys
   (define-key lisp-mode-map (kbd "C-c l") 'lispdoc)

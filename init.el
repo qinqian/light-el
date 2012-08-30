@@ -12,17 +12,18 @@
 (add-to-list 'load-path light-dir)
 
 ;; basic setting
-(mapc 'require '(light-def
-		 light-el
-		 light-fit
-		 light-r
-		 light-py
-     light-lisp
-		 light-pub
-		 light-key
-     light-save
-     light-eclim
-     ))
+(mapc 'require '(light-el
+                 light-def
+                 light-fit
+                 light-r
+                 light-py
+                 light-lisp
+                 light-pub
+                 light-key
+                 light-save
+                 light-eclim
+                 light-net
+                 ))
 
 ;; OSX specific settings
 (when (eq system-type 'darwin)

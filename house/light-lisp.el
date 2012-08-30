@@ -25,7 +25,7 @@
   (dolist (hook lispy-hooks)
     (add-hook hook 'light-lisp-minor))
   (dolist (hook elispy-hooks)
-    (add-hook hook 'set-up-hippie-expand-for-elisp))
+    (add-hook hook 'set-up-hippie-expand-for-elisp)))
 
 ;; slime-mode
 (add-auto-mode 'lisp-mode "\\.cl$")

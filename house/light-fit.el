@@ -101,7 +101,6 @@
 (require 'paredit)
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
-
 (require 'auto-complete)
 (global-auto-complete-mode t)
 (define-key ac-completing-map [tab] 'ac-complete)
