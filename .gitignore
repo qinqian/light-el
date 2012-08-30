@@ -4,7 +4,6 @@
 elpa
 el-get
 auto-save-list
-vendor
 TODO
 ac-comphist.dat
 .smex-items
@@ -18,3 +17,4 @@ custom.el
 semanticdb
 .*
 js
+/abbrev_defs

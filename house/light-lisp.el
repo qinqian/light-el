@@ -29,8 +29,24 @@
 
 ;; slime-mode
 (add-auto-mode 'lisp-mode "\\.cl$")
-(require 'slime)
+
+;; use slime-autoloads instead of slime to start server
+;; slime-fuzzy has loaded problems
+(require 'slime-autoloads)
 (setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
-(slime-setup)
+(eval-after-load 'slime
+  '(progn
+     (add-to-list 'load-path (concat (dir-of-lib2 "slime") "/contrib"))
+     (setq slime-protocol-version 'ignore)
+     (add-hook 'slime-mode-hook 'pretty-mode)
+     (add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
+     (slime-setup '(slime-repl))
+;     (setq slime-complete-symbol*-fancy t)
+;     (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+;
+     ;; Stop SLIME's REPL from grabbing DEL, which is annoying when backspacing over a '('
+     (defun override-slime-repl-bindings-with-paredit ()
+       (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil))
+     (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit t)))
 
 (provide 'light-lisp)

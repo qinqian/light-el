@@ -44,7 +44,6 @@
  '(el-get				; el-get is self-hosting
    switch-window			; takes over C-x o
    ac-R
-   slime
    (:name smex				; a better (ido like) M-x
 	  :after (lambda ()
 		   (setq smex-save-file "~/.emacs.d/.smex-items")
@@ -70,6 +69,7 @@
 
 (when (el-get-executable-find "svn")
   (loop for p in '(psvn    		; M-x svn-status
+                  slime
 		   )
 	do (add-to-list 'el-get-sources p)))
 
@@ -84,6 +84,7 @@
         (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-packages)
+
 
 ;; vendor house
 (mapc 'light-load (list light-vendor light-house))

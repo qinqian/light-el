@@ -1,4 +1,4 @@
-;; defuns
+; defuns
 ;; edit
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
@@ -124,7 +124,7 @@
   "TO DO, add submodule"
   (interactive)
   (message "Updating git modules")
-  (shell-command "cd ~/.emacs.d/vendor && git pull"))
+  (shell-command "cd ~/.emacs.d && git submodule foreach 'git pull'"))
 
 (defun google ()
   "Googles a query or region if any."
@@ -168,6 +168,15 @@
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+(defun dir-of-lib1 (lib-name)
+  """first version use default function,
+  find-library will open the *.el files"""
+  (expand-file-name (directory-file-name (buffer-name (find-library lib-name)))))
+
+(defun dir-of-lib2 (lib-name)
+  """second, use find-func library, only name"""
+  (require 'find-func)
+  (file-name-as-directory (file-name-directory (find-library-name lib-name))))
 ;; exercise
 (defun fill-test(&optional arg)
      (if (> arg fill-column)
