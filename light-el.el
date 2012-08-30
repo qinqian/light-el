@@ -10,12 +10,12 @@
   (package-refresh-contents))
 
 (defvar elpa-packages
-  '(evil ein
+  '(evil ein paredit pretty-mode
     ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
     session ess yasnippet org-fstree ascii  ; detect special charactor
     ibuffer ido ido-ubiquitous whole-line-or-region autopair
     diminish magit find-file-in-project popup
-    smart-tab flymake-python-pyflakes save-visited-files
+    smart-tab flymake-python-pyflakes
     color-theme-solarized auctex muse maxframe)
   "A list of packages to ensure are installed at launch.")
 
@@ -54,8 +54,7 @@
    ))
 
 (unless (string-match "apple-darwin" system-configuration)
-  (loop for p in '(color-theme		; nice looking emacs
-                color-theme-tango
+  (loop for p in '(		; nice looking emacs
 		   anything
            anything-R
 		   )
@@ -82,6 +81,6 @@
 (el-get 'sync my-packages)
 
 ;; vendor house
-(mapcar 'light-load (list light-vendor light-house))
+(mapc 'light-load (list light-vendor light-house))
 
 (provide 'light-el)

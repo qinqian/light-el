@@ -21,18 +21,10 @@
 
 (setq ess-use-auto-complete t)
 (define-key ac-completing-map (kbd "M-h") 'ac-quick-help)
-
-(define-key ac-completing-map "\M-n" nil) ;; was ac-next
-(define-key ac-completing-map "\M-p" nil) ;; was ac-previous
-(define-key ac-completing-map "\M-," 'ac-next)
-(define-key ac-completing-map "\M-k" 'ac-previous)
-(define-key ac-completing-map [tab] 'ac-complete)
-(define-key ac-completing-map [return] nil)
-
+;; ac faces
 (set-face-attribute 'ac-candidate-face nil   :background "#00222c" :foreground "light gray")
 (set-face-attribute 'ac-selection-face nil   :background "SteelBlue4" :foreground "white")
 (set-face-attribute 'popup-tip-face    nil   :background "#003A4E" :foreground "light gray")
-
 (setq 
       ;; ac-auto-show-menu 1
       ;; ac-candidate-limit nil

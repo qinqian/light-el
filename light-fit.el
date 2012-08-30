@@ -74,7 +74,7 @@
 (add-hook 'comint-output-filter-functions
           'comint-watch-for-password-prompt)
 
-(setq time-stamp-format                           
+(setq time-stamp-format
 " modified by %:u :%04y-%02m-%02d %02H:%02M:%02S"
       time-stamp-active t
       time-stamp-warn-inactive t)
@@ -93,12 +93,19 @@
 (require 'autopair)
 (setq autopair-autowrap t)
 (autopair-global-mode t)
-
 (require 'smart-tab)
 (global-smart-tab-mode t)
 
+(require 'pretty-mode)
+(autoload 'turn-on-pretty-mode "pretty-mode" "lambda symbol" t)
+(require 'paredit)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+
+
 (require 'auto-complete)
 (global-auto-complete-mode t)
+(define-key ac-completing-map [tab] 'ac-complete)
+(define-key ac-completing-map [return] nil)
 (define-key ac-completing-map (kbd "C-n") 'ac-next)
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)
 
@@ -106,8 +113,13 @@
 (add-hook 'window-setup-hook 'maximize-frame t)
 
 (require 'switch-window)
-
 (smex-initialize)
+
+;; C-w and M-w for cut and copy current line
+(whole-line-or-region-mode t)
+(diminish 'whole-line-or-region-mode)
+(make-variable-buffer-local 'whole-line-or-region-mode)
+(suspend-mode-during-cua-rect-selection 'whole-line-or-region-mode)
 
 ;; anything
 (mapc 'require '(anything-config

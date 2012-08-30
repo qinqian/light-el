@@ -36,4 +36,3 @@
 (when (not (file-exists-p custom-file))
   (shell-command (concat "touch " custom-file)))
 (load custom-file)
-(put 'narrow-to-region 'disabled nil)

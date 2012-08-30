@@ -1,11 +1,33 @@
 ;; defuns
-
-
 ;; edit
+;;----------------------------------------------------------------------------
+;; Handier way to add modes to auto-mode-alist
+;;----------------------------------------------------------------------------
+(defun add-auto-mode (mode &rest patterns)
+  "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
+  (dolist (pattern patterns)
+    (add-to-list 'auto-mode-alist (cons pattern mode))))
+(defun suspend-mode-during-cua-rect-selection (mode-name)
+  "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
+  (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
+        (advice-name (intern (format "suspend-%s" mode-name))))
+    (eval-after-load 'cua-rect
+      `(progn
+         (defvar ,flagvar nil)
+         (make-variable-buffer-local ',flagvar)
+         (defadvice cua--activate-rectangle (after ,advice-name activate)
+           (setq ,flagvar (and (boundp ',mode-name) ,mode-name))
+           (when ,flagvar
+             (,mode-name 0)))
+         (defadvice cua--deactivate-rectangle (after ,advice-name activate)
+           (when ,flagvar
+             (,mode-name 1)))))))
+
 ;; evil
 (defun eviler ()
     (interactive)
     (evil-mode 1))
+
 (defun bye-eviler ()
     (interactive)
     (funcall evil-mode -1))
@@ -36,7 +58,7 @@
                                  ("^.\\{80,\\}$" (0 'light-long-line-face t))
                                  ("[ \t]+$"
                                   (0 'light-trailing-space-face t))))))))
-    (global-whitespace-newline-mode t))        
+    (global-whitespace-newline-mode t))
 
 (defun whites-simple ()
   (interactive)
@@ -97,7 +119,7 @@
   (message "Get latest vendor %s" url)
   (shell-command
    (concat "git")))
-  
+
 (defun refresh-vendor ()
   "TO DO, add submodule"
   (interactive)
@@ -114,7 +136,32 @@
          (buffer-substring (region-beginning) (region-end))
        (read-string "Google: "))))))
 
-;; sudo
+(defun lispdoc ()
+  ;; From http://bc.tech.coop/blog/070515.html
+  "Searches lispdoc.com for SYMBOL, which is by default the symbol currently under the curser"
+  (interactive)
+  (let* ((word-at-point (word-at-point))
+         (symbol-at-point (symbol-at-point))
+         (default (symbol-name symbol-at-point))
+         (inp (read-from-minibuffer
+               (if (or word-at-point symbol-at-point)
+                   (concat "Symbol (default " default "): ")
+                 "Symbol (no default): "))))
+    (if (and (string= inp "") (not word-at-point) (not
+                                                   symbol-at-point))
+        (message "you didn't enter a symbol!")
+      (let ((search-type (read-from-minibuffer
+                          "full-text (f) or basic (b) search (default b)? ")))
+        (browse-url (concat "http://lispdoc.com?q="
+                            (if (string= inp "")
+                                default
+                              inp)
+                            "&search="
+                            (if (string-equal search-type "f")
+                                "full+text+search"
+                              "basic+search")))))))
+
+;; manage
 (defun sudo (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
