@@ -34,6 +34,7 @@
 ;; http://stackoverflow.com/questions/8833235/install-ecb-with-emacs-starter-kit-in-emacs-24
 (add-to-list 'load-path (concat user-emacs-directory "el-get/ecb"))
 (require 'ecb)
+(setq stack-trace-on-error nil)
 (setq ecb-auto-activate nil
       ecb-tip-of-the-day nil)
 
