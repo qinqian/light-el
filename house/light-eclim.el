@@ -15,7 +15,7 @@
 (require 'eclimd)
 (custom-set-variables
  '(eclim-eclipse-dirs '("~/Codes/eclipse"))
- '(eclimd-default-workspace "~/emacs-eclim")
+ '(eclimd-default-workspace "~/eclipse/")
  '(eclimd-wait-for-process nil)
  '(eclimd-executable "~/Codes/eclipse/eclimd")
  '(eclim-executable "~/Codes/eclipse/eclim"))

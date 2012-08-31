@@ -12,7 +12,8 @@
 (message "install needed packages")
 
 (defvar elpa-packages
-  '(python-mode evil ein paredit pretty-mode markdown-mode markdown-mode+
+  '(
+    python-mode evil ein paredit pretty-mode markdown-mode markdown-mode+
     ;sublime ;;evil simulates vim;;viper built-in using fn uncomfortable, vip simulates vi
     js2-mode js3-mode mmm-mode coffee-mode js-comint ;; for javascript, TO READ
     fringe-helper python-mode flymake-cursor

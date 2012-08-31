@@ -128,36 +128,5 @@
                    anything-obsolete
                    ))
 
-;; program
-;; use cedet1.1 bzr version
-(require 'cedet)
-(require 'srecode)
-(semantic-mode 1)
-;;; Turn on CEDET's fun parts
-(setq semantic-load-turn-useful-things-on t)
-;;; Add further minor-modes to be enabled by semantic-mode.
-;;; See doc-string of `semantic-default-submodes' for other things
-;;; you can use here.
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-summary-mode t)
-(add-to-list 'semantic-default-submodes 'global-semantic-idle-completions-mode t)
-(add-to-list 'semantic-default-submodes 'global-cedet-m3-minor-mode t)
-
-; Enable template insertion menu
-;(global-srecode-minor-mode 1)
-;
-;;;; Enable EDE (Project Management) features
-(global-ede-mode 1)
-;
-;;; Enable Semantic
-;(setq semanticdb-project-roots
-;    (list
-;        (expand-file-name "/")))
-;
-;(semantic-load-enable-excessive-code-helpers)
-;(semantic-load-enable-code-helpers)
-;(semantic-load-enable-gaudy-code-helpers)
-;(semantic-load-enable-minimum-features)
-;(require 'cogre)
-;(require 'cedet-contrib)
 
 (provide 'light-fit)
