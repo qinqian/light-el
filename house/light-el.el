@@ -45,6 +45,7 @@
  '(el-get				; el-get is self-hosting
    switch-window			; takes over C-x o
    ac-R
+   nxhtml
    (:name smex				; a better (ido like) M-x
 	  :after (lambda ()
 		   (setq smex-save-file "~/.emacs.d/.smex-items")
