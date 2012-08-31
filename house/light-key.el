@@ -94,6 +94,11 @@
   (define-key lisp-mode-map (kbd "C-c l") 'lispdoc)
   ;; other maps keys
   ;; learn from emacs lisp programming
+
+  ;; appearance
+  (global-set-key (kbd "M-C-8") '(lambda () (interactive) (adjust-opacity nil -5)))
+  (global-set-key (kbd "M-C-9") '(lambda () (interactive) (adjust-opacity nil 5)))
+  (global-set-key (kbd "M-C-0") '(lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
   )
 
 (provide 'light-key)

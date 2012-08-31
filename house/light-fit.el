@@ -56,7 +56,6 @@
 ;; Use C-f during file selection to switch to regular find-file
 (ido-mode t)
 (ido-everywhere t)
-(setq ido-ubiquitous t)
 (ido-ubiquitous-mode t)
 
 ;; Allow the same buffer to be open in different frames
@@ -98,8 +97,6 @@
 
 (require 'pretty-mode)
 (autoload 'turn-on-pretty-mode "pretty-mode" "lambda symbol" t)
-(require 'paredit)
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
 (require 'auto-complete)
 (global-auto-complete-mode t)
@@ -127,6 +124,11 @@
                    anything-gtags
                    anything-obsolete
                    ))
+
+;; Charactor to escape paredit
+
+(require 'paredit)
+(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
 
 (provide 'light-fit)

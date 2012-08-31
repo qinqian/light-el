@@ -1,3 +1,6 @@
 [submodule "vendor/emacs-eclim"]
 	path = vendor/emacs-eclim
 	url = https://github.com/senny/emacs-eclim
+[submodule "vendor/html5-el"]
+	path = vendor/html5-el
+	url = https://github.com/hober/html5-el

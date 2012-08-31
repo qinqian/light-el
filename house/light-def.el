@@ -1,4 +1,26 @@
 ; defuns
+;; appearance
+;; opacity
+(defun adjust-opacity (frame incr)
+  (let* ((oldalpha (or (frame-parameter frame 'alpha) 100))
+         (newalpha (+ incr oldalpha)))
+    (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
+      (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
+
+;; color and opaque
+(defun light ()
+  "Activate a light color theme."
+  (interactive)
+  (if (boundp 'custom-enabled-themes)
+      (custom-set-variables '(custom-enabled-themes '(solarized-light)))))
+
+(defun dark ()
+  "Activate a dark color theme."
+  (interactive)
+  (if (boundp 'custom-enabled-themes)
+      (custom-set-variables '(custom-enabled-themes '(solarized-dark)))
+))
+
 ;; edit
 ;;----------------------------------------------------------------------------
 ;; Handier way to add modes to auto-mode-alist
@@ -7,6 +29,7 @@
   "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
   (dolist (pattern patterns)
     (add-to-list 'auto-mode-alist (cons pattern mode))))
+
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
   (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
@@ -175,8 +198,10 @@
 
 (defun dir-of-lib2 (lib-name)
   """second, use find-func library, only name"""
-  (require 'find-func)
+  ;; (require 'find-func)
+  (autoload 'find-library-name "find-func")
   (file-name-as-directory (file-name-directory (find-library-name lib-name))))
+
 ;; exercise
 (defun fill-test(&optional arg)
      (if (> arg fill-column)
