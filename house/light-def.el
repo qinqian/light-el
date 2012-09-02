@@ -7,7 +7,7 @@
     (when (and (<= frame-alpha-lower-limit newalpha) (>= 100 newalpha))
       (modify-frame-parameters frame (list (cons 'alpha newalpha))))))
 
-;; color and opaque
+;; lor and opaque
 (defun light ()
   "Activate a light color theme."
   (interactive)
@@ -202,6 +202,7 @@
   (autoload 'find-library-name "find-func")
   (file-name-as-directory (file-name-directory (find-library-name lib-name))))
 
+
 ;; exercise
 (defun fill-test(&optional arg)
      (if (> arg fill-column)
@@ -252,7 +253,9 @@ is hard to install especially with newest cedet"
   (message "compiling %s" (current-buffer)))
 
 (defun easy_py(n)
-  (interactive "b")
-  (message "%s" n))
+  (interactive "b"))
+
+(fset 'comment-line
+      [?\C-a ?\C-  ?\C-e ?\M-\;])
 
 (provide 'light-def)

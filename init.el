@@ -1,5 +1,5 @@
 ;; init.el
-(setq debug-on-error t)
+;(setq debug-on-error t)
 
 (defvar light-dir (file-name-directory load-file-name)
   "root dir of emacs config")

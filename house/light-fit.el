@@ -2,7 +2,8 @@
   (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
 
 (dolist (mode '(mouse-wheel-mode blink-cursor-mode
-                menu-bar-mode    tool-bar-mode))
+                                 tool-bar-mode
+                ;; menu-bar-mode tool-bar-mode))
     (when (fboundp mode) (funcall mode -1)))
 
 (display-time-mode 1)
@@ -126,9 +127,7 @@
                    ))
 
 ;; Charactor to escape paredit
-
 (require 'paredit)
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-
 
 (provide 'light-fit)

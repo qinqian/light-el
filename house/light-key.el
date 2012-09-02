@@ -99,6 +99,9 @@
   (global-set-key (kbd "M-C-8") '(lambda () (interactive) (adjust-opacity nil -5)))
   (global-set-key (kbd "M-C-9") '(lambda () (interactive) (adjust-opacity nil 5)))
   (global-set-key (kbd "M-C-0") '(lambda () (interactive) (modify-frame-parameters nil `((alpha . 100)))))
+
+  ;; comment easy key
+  (global-set-key (kbd "M-;") 'comment-line) ;;problem
   )
 
 (provide 'light-key)
