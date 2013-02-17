@@ -15,7 +15,7 @@
 ;; basic setting
 (mapc 'require '(light-def
                  light-el
-                 light-fit
+;                 light-fit
                  light-pub
                  light-key
                  light-save
